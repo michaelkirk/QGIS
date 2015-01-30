@@ -5,6 +5,10 @@ compiler:
 
 cache: apt
 
+os:
+  - linux
+  - osx
+
 notifications:
   irc: "chat.freenode.net#qgis"
   on_failure: change
