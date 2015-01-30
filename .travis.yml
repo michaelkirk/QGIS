@@ -13,7 +13,7 @@ before_install:
   - tests/scripts/travis/setup.sh
 
 install:
-  - tests/scripts/travis/install.sh
+  - tests/scripts/travis/build.sh
 
 script:
   - tests/scripts/travis/run_tests.sh
