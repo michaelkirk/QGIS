@@ -3,7 +3,10 @@ language: cpp
 compiler:
   - clang
 
-cache: apt
+cache:
+  apt: true
+  directories:
+    - /usr/local/Cellar
 
 os:
   - linux
@@ -13,8 +16,8 @@ before_install:
   - tests/scripts/travis/setup.sh
 
 install:
-  - tests/scripts/travis/build.sh
+  - tests/scripts/travis/configure.sh
 
 script:
-  - tests/scripts/travis/run_tests.sh
+  - tests/scripts/travis/build.sh
 
