@@ -9,11 +9,6 @@ os:
   - linux
   - osx
 
-notifications:
-  irc: "chat.freenode.net#qgis"
-  on_failure: change
-  on_success: change
-
 before_install:
   - tests/scripts/travis/setup.sh
 
