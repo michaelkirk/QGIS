@@ -1,6 +1,6 @@
 #!/bin/sh
-export QGIS_SRC_DIRECTORY=/Users/mkirk/src/qgis
-export QGIS_BUILD_DIRECTORY=/Users/mkirk/src/qgis/build
+export QGIS_SRC_DIRECTORY=$TRAVIS_BUILD_DIR
+export QGIS_BUILD_DIRECTORY=$TRAVIS_BUILD_DIR/build
 export HOMEBREW_PREFIX=`brew --prefix`
 export DYLD_LIBRARY_PATH=${QGIS_BUILD}/output/lib:${QGIS_BUILD}/PlugIns/qgis
 export PATH=${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin::/usr/X11/bin
@@ -12,7 +12,7 @@ export GDAL_DRIVER_PATH=${HOMEBREW_PREFIX}/lib/gdalplugins
 mkdir -p build
 cd build
 cmake .. -DCXX_EXTRA_FLAGS="-I'/usr/local/opt/gettext/include' -F/usr/local/opt/qt/lib -isystem/usr/local/include -isystem/opt/X11/include -isystem/opt/X11/include/freetype2 -isystem/System/Library/Frameworks/OpenGL.framework/Versions/Current/Headers -I/usr/local/opt/readline/include -I/usr/local/opt/sqlite/include -I/usr/local/opt/expat/include -I/usr/local/opt/openssl/include -I/usr/local/opt/libxml2/include -I/usr/local/opt/liblwgeom/include -I/usr/local/opt/gettext/include -I/usr/local/opt/icu4c/include -L/usr/local/opt/bison/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib -L/usr/local/opt/expat/lib -L/usr/local/opt/openssl/lib -L/usr/local/opt/libxml2/lib -L/usr/local/opt/liblwgeom/lib -L/usr/local/opt/gettext/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/icu4c/lib -L/usr/local/lib -L/opt/X11/lib -L/System/Library/Frameworks/OpenGL.framework/Versions/Current/Libraries -Wl,-headerpad_max_install_names"\
-  -DCMAKE_INSTALL_PREFIX=/Users/mkirk/src/qgis/build \
+  -DCMAKE_INSTALL_PREFIX=$QGIS_BUILD_DIRECTORY \
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_FIND_FRAMEWORK=LAST \
   -DCMAKE_VERBOSE_MAKEFILE=ON \
@@ -35,7 +35,7 @@ cmake .. -DCXX_EXTRA_FLAGS="-I'/usr/local/opt/gettext/include' -F/usr/local/opt/
   -DPYTHON_EXECUTABLE='/usr/local/Frameworks/Python.framework/Versions/2.7/bin/python' \
   -DPYTHON_CUSTOM_FRAMEWORK='/usr/local/Frameworks/Python.framework/Versions/2.7' \
   -DGITCOMMAND=/usr/local/opt/git/bin/git \
-  -DGIT_MARKER=/Users/mkirk/src/qgis/.git/index \
+  -DGIT_MARKER=$QGIS_BUILD_DIRECTORY/.git/index \
   -DWITH_SERVER=TRUE \
   -DFCGI_INCLUDE_DIR=/usr/local/opt/fcgi/include \
   -DFCGI_LIBRARY=/usr/local/opt/fcgi/lib/libfcgi.dylib \
