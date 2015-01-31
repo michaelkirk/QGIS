@@ -9,5 +9,5 @@ export PYTHONPATH=${HOMEBREW_PREFIX}/lib/python2.7/site-packages
 export PYQGIS_STARTUP=${HOMEBREW_PREFIX}/Library/Taps/osgeo/homebrew-osgeo4mac/enviro/python_startup.py
 export GDAL_DRIVER_PATH=${HOMEBREW_PREFIX}/lib/gdalplugins
 
-ctest -VV -S qgis-test-travis.ctest --output-on-failure
+ctest -V -S qgis-test-travis.ctest --output-on-failure
 
