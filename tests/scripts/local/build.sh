@@ -1,6 +1,6 @@
 #!/bin/sh
 export QGIS_SRC_DIRECTORY=/Users/mkirk/src/qgis
-export QGIS_BUILD_DIRECTORY=/Users/mkirk/src/qgis/build
+export QGIS_BUILD_DIRECTORY=$QGIS_SRC_DIRECTORY/build
 export HOMEBREW_PREFIX=`brew --prefix`
 export DYLD_LIBRARY_PATH=${QGIS_BUILD}/output/lib:${QGIS_BUILD}/PlugIns/qgis
 export PATH=${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin::/usr/X11/bin
