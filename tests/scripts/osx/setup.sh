@@ -1,4 +1,8 @@
 #!/bin/sh
+
+echo 'Detecting number of processors...'
+sysctl hw.ncpu
+
 export HOMEBREW_PREFIX=`brew --prefix`
 brew update
 brew install python
