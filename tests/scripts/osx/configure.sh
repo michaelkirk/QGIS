@@ -18,7 +18,8 @@ cmake .. -DCXX_EXTRA_FLAGS="-I'/usr/local/opt/gettext/include' -F/usr/local/opt/
   -DCMAKE_VERBOSE_MAKEFILE=ON \
   -Wno-dev \
   -DBISON_EXECUTABLE=/usr/local/opt/bison/bin/bison \
-  -DENABLE_TESTS=FALSE \
+  -DENABLE_TESTS=TRUE \
+  -DENABLE_MODELTEST \
   -DQWT_INCLUDE_DIR=/usr/local/opt/qwt/lib/qwt.framework/Headers \
   -DQWT_LIBRARY=/usr/local/opt/qwt/lib/qwt.framework/qwt \
   -DQWTPOLAR_INCLUDE_DIR=/usr/local/opt/qwtpolar/lib/qwtpolar.framework/Headers \
