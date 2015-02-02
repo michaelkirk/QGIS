@@ -15,7 +15,6 @@ cmake .. -DCXX_EXTRA_FLAGS="-I'/usr/local/opt/gettext/include' -F/usr/local/opt/
   -DCMAKE_INSTALL_PREFIX=$QGIS_BUILD_DIRECTORY \
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_FIND_FRAMEWORK=LAST \
-  -DCMAKE_VERBOSE_MAKEFILE=ON \
   -Wno-dev \
   -DBISON_EXECUTABLE=/usr/local/opt/bison/bin/bison \
   -DENABLE_TESTS=TRUE \
