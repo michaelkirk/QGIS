@@ -18,5 +18,6 @@ cmake .. -DQWT_INCLUDE_DIR=$OPT_PREFIX/qwt/lib/qwt.framework/Headers/ \
          -DENABLE_TESTS=YES \
          -DWITH_GRASS=OFF \
          -DSUPPRESS_QT_WARNINGS=ON \
-         -DENABLE_MODELTEST=ON
+         -DENABLE_MODELTEST=ON \
+         -DWITH_QWTPOLAR=OFF
 
