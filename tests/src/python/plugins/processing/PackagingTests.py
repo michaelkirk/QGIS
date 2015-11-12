@@ -36,3 +36,6 @@ class PackageTests(unittest.TestCase):
 def runTests():
     t = unittest.TestLoader().loadTestsFromTestCase(PackageTests)
     unittest.TextTestRunner(verbosity=3, stream=sys.stdout).run(t)
+
+if __name__ == '__main__':
+    unittest.main()

@@ -234,3 +234,6 @@ def runtests():
     testsuite = suite()
     testsuite.run(result)
     return result
+
+if __name__ == '__main__':
+    unittest.main()

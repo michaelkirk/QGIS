@@ -29,14 +29,17 @@ from utilities import getQgisTestApp, unittest
 
 QGISAPP, CANVAS, IFACE, PARENT = getQgisTestApp()
 
+from plugins.processing.core import parameters
+
 from plugins.processing.core.parameters import ParameterNumber
 from plugins.processing.core.parameters import ParameterCrs
+from plugins.processing.core.parameters import ParameterExtent
 
 
 class ParametersTest(unittest.TestCase):
 
     def testParameterNumber(self):
-        param = ParameterNumber('name', 'desc', 0, 10)
+        param = ParameterNumber('name', 'desc', 0, 10, optional=True)
         assert not param.setValue('wrongvalue')
         assert param.value is None
         assert not param.setValue(25)
@@ -45,42 +48,22 @@ class ParametersTest(unittest.TestCase):
         assert param.value == 5
         assert param.setValue(None)
         assert param.value == param.default
-        s = param.serialize()
-        param2 = ParameterNumber()
-        param2.deserialize(s)
-        assert param.default == param2.default
-        assert param.max == param2.max
-        assert param.min == param2.min
-        assert param.description == param2.description
-        assert param.name == param2.name
 
     def testParameterCRS(self):
-        param = ParameterCrs('name', 'desc')
+        param = ParameterCrs('name', 'desc', optional=True)
         assert param.setValue('EPSG:12003')
         assert param.value == 'EPSG:12003'
         assert param.setValue(None)
         assert param.value == param.default
-        s = param.serialize()
-        param2 = ParameterCrs()
-        param2.deserialize(s)
-        assert param.default == param2.default
-        assert param.description == param2.description
-        assert param.name == param2.name
 
     def testParameterExtent(self):
-        param = ParameterExtent('name', 'desc')
+        param = ParameterExtent('name', 'desc', optional=True)
         assert not param.setValue('0,2,0')
         assert not param.setValue('0,2,0,a')
-        assert not param.setValue('0,2,2,4')
+        assert param.setValue('0,2,2,4')
         assert param.value == '0,2,2,4'
         assert param.setValue(None)
-        assert param.value == param.default
-        s = param.serialize()
-        param2 = ParameterExtent()
-        param2.deserialize(s)
-        assert param.default == param2.default
-        assert param.description == param2.description
-        assert param.name == param2.name
+        assert param.value == param.default, 'Result: {}, Expected: {}'.format(param.value, param.default)
 
 
 def suite():
@@ -93,3 +76,6 @@ def runtests():
     testsuite = suite()
     testsuite.run(result)
     return result
+
+if __name__ == '__main__':
+    unittest.main()
