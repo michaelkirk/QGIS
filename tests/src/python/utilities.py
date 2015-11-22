@@ -42,6 +42,7 @@ except ImportError:
 
 import webbrowser
 import subprocess
+import importlib
 
 # Support python < 2.7 via unittest2 needed for expected failure decorator.
 # Note that you should ignore unused import warnings here as these are imported
@@ -784,3 +785,9 @@ class DoxygenParser():
             if doc is not None and list(doc):
                 return True
         return False
+
+
+def loadPlugin(name, iface):
+    mod = importlib.import_module(name)
+    plugin = mod.classFactory(iface)
+    return mod, plugin

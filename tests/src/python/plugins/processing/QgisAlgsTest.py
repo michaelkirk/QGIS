@@ -25,8 +25,10 @@ __copyright__ = '(C) 2013, Victor Olaya'
 
 __revision__ = '$Format:%H$'
 
-from utilities import getQgisTestApp, unittest
+from utilities import getQgisTestApp, unittest, loadPlugin
 QGISAPP, CANVAS, IFACE, PARENT = getQgisTestApp()
+mod, plugin = loadPlugin('processing', IFACE)
+mod.Processing.initialize()
 
 import unittest
 import processing
