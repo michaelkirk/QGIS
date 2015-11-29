@@ -61,10 +61,15 @@ class ParametersTest(unittest.TestCase):
         assert not param.setValue('0,2,0')
         assert not param.setValue('0,2,0,a')
         assert param.setValue('0,2,2,4')
-        assert param.value == '0,2,2,4'
+        self.assertEqual(param.value, '0,2,2,4')
         assert param.setValue(None)
-        assert param.value == param.default, 'Result: {}, Expected: {}'.format(param.value, param.default)
+        self.assertEqual(param.value, None)
 
+        required = ParameterExtent('name', 'desc', optional=False)
+        first_value = '0,2,2,4'
+        assert required.setValue(first_value)
+        assert not required.setValue(None)
+        self.assertEqual(required.value, first_value)
 
 def suite():
     suite = unittest.makeSuite(ParametersTest, 'test')
