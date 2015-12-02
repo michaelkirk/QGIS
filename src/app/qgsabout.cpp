@@ -44,7 +44,7 @@ QgsAbout::QgsAbout( QWidget *parent )
   init();
 }
 
-QgsAbout::~QgsAbout()
+QQgsAbout::~QgsAbout()
 {
 }
 
